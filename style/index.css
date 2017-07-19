@@ -11,6 +11,15 @@ body {
   background-color: #FF8200;
   border-color: #FF9933;
 }
+
+.navbar-default .navbar-brand > img {
+  display: block;
+  width: 50px;
+  height: 45px;
+  margin-top: -15px;
+  margin-left: 30px; 
+}
+
 .navbar-default .navbar-nav > li {
     margin-right: 30px;
 }
@@ -64,24 +73,30 @@ body {
     margin: 0 auto;
 }
 
-/*.main {
+.main {
     width:85%;
     height:100%;
-    border: 1px solid red;
+    border: 1px solid #E3E1DF;
     background-color: #E3E1DF;
 
     margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
-.content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+.main .title {
+  height: 30px;
+  margin: 20px 40px;
 }
 
-.column {
-    width: 350px;
-}*/
+.main .title > p {
+  font-size: 22px;
+  color: #FF8200;
+}
+
+.main .row {
+  margin: 0 20px;
+}
 
 @media (max-width: 768px) {
   .navbar-nav {
