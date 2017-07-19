@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    // 登录
-    function open() {
+    // 登录弹出框
+    function logOpen() {
         var mask = $('.mask');
         var login = $('.log');
 
@@ -27,7 +27,7 @@ $(document).ready(function () {
         });
     }
 
-    function close() {
+    function logClose() {
         var mask = $('.mask');
         var login = $('.log');
         mask.css('display', 'none');
@@ -35,19 +35,19 @@ $(document).ready(function () {
     }
 
     $('#header-signin').click(function () {
-        open();
+        logOpen();
     });
 
     $('.close').click(function () {
-        close();
+        logClose();
     });
 
     $('.mask').click(function () {
-        close();
+        logClose();
     });
 
 
-    // 注册
+    // 注册弹出框
     function regOpen() {
         var mask = $('.mask');
         var reg = $('.register');
@@ -91,5 +91,26 @@ $(document).ready(function () {
     $('.mask').click(function () {
         regClose();
     });
+
+    function checkEmail() {
+        var emailVal = $('.logEmail').val;
+        if(!isEmail(emailVal)) {
+            $('.logEmail input').css({
+                'border-color': 'red'
+            });
+            
+            return false;
+        }
+        return true;
+    }
+
+    function isEmail(str) {
+        var reg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+        return reg.test(str);
+    }
+
+    $('.logFooter button').click(function() {
+        checkEmail();
+    })
 });
 
