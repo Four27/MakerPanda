@@ -1,12 +1,95 @@
-var popupLog = {
-    createElms: function () {
-        $('<div class="log"><div class="content"><div class="logHeader"><button type="button" class="close"><span>&times;</span></button><img src="images/logo.png" alt="logo"></div><div class="logBody"><form><div class="input-group input-group-lg"><span class="input-group-addon"><label class="glyphicon glyphicon-user"></label></span><input type="text" class="form-control" placeholder="输入邮箱" aria-describedby="sizing-addon1"> </div> <div class="input-group input-group-lg"><span class="input-group-addon"><label class="glyphicon glyphicon-lock"></label></span><input type="text" class="form-control" placeholder="输入密码" aria-describedby="sizing-addon1"></div><div class="forget"><a>忘记密码？</a></div></form></div><div class="logFooter"><button type="button" class="btn btn-primary">登 录</button></div></div></div>')
-            .appendTo('body')
-    }
-}
+$(document).ready(function () {
+    // 登录
+    function open() {
+        var mask = $('.mask');
+        var login = $('.log');
 
-$(function() {
-    $('#header-signin').onclick = function() {
-        popupLog.createElms();
+        var sWidth = $(document.body).outerWidth();
+        var sHeight = $(document.body).outerHeight();
+        var cHeight = $(window).height();
+        var lWidth = login.width();
+        var lHeight = login.height();
+        var left = (sWidth - lWidth) / 2;
+        var top = (cHeight - lHeight) / 2;
+
+        mask.css({
+            'display': 'block',
+            'width': 'sWidth' + 'px',
+            'height': 'sHeight' + 'px',
+            'top': 0,
+            'left': 0
+        });
+
+        login.css({
+            'display': 'flex',
+            'top': top + 'px',
+            'left': left + 'px'
+        });
     }
-})
+
+    function close() {
+        var mask = $('.mask');
+        var login = $('.log');
+        mask.css('display', 'none');
+        login.css('display', 'none');
+    }
+
+    $('#header-signin').click(function () {
+        open();
+    });
+
+    $('.close').click(function () {
+        close();
+    });
+
+    $('.mask').click(function () {
+        close();
+    });
+
+
+    // 注册
+    function regOpen() {
+        var mask = $('.mask');
+        var reg = $('.register');
+
+        var sWidth = $(document.body).outerWidth();
+        var sHeight = $(document.body).outerHeight();
+        var cHeight = $(window).height();
+        var lWidth = reg.width();
+        var lHeight = reg.height();
+        var left = (sWidth - lWidth) / 2;
+        var top = (cHeight - lHeight) / 2;
+
+        mask.css({
+            'display': 'block',
+            'width': 'sWidth' + 'px',
+            'height': 'sHeight' + 'px'
+        });
+
+        reg.css({
+            'display': 'flex',
+            'top': top + 'px',
+            'left': left + 'px'
+        });
+    }
+
+    function regClose() {
+        var mask = $('.mask');
+        var reg = $('.register');
+        mask.css('display', 'none');
+        reg.css('display', 'none');
+    }
+
+    $('#header-register').click(function () {
+        regOpen();
+    });
+
+    $('.close').click(function () {
+        regClose();
+    });
+
+    $('.mask').click(function () {
+        regClose();
+    });
+});
+

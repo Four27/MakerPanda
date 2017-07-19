@@ -6,14 +6,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap测试</title>
-    <link rel="stylesheet" href="style/bootstrap.min.css">
+    <title>MakerPanda</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="style/index.css">
-    <!--<link rel="stylesheet" href="style/flexbox.css">-->
 </head>
 
 <body>
-    <nav class="navbar navbar-default">
+    <!--导航-->
+    <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
@@ -31,12 +31,12 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">首页</a></li>
-                    <li id="header-signin"><a href="#">Mixly</a></li>
+                    <li><a href="#">Mixly</a></li>
                     <li><a href="#">Scratch</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">注册</a></li>
+                    <li id="header-register"><a href="#">注册</a></li>
                     <li id="header-signin"><a href="#">登录</a></li>
                 </ul>
             </div>
@@ -45,14 +45,12 @@
 
 
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
             <li data-target="#carousel-example-generic" data-slide-to="1"></li>
             <li data-target="#carousel-example-generic" data-slide-to="2"></li>
         </ol>
 
-        <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
                 <img src="images/img1.jpg" alt="First Slide">
@@ -65,7 +63,6 @@
             </div>
         </div>
 
-        <!-- Controls -->
         <a class="carousel-control left" href="#carousel-example-generic" data-slide="prev">&lsaquo;</a>
         <a class="carousel-control right" href="#carousel-example-generic" data-slide="next">&rsaquo;</a>
     </div>
@@ -180,8 +177,142 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>熊孩子创客校园行</h3>
+                        <p> 7月2日下午，“熊孩子创客坊”校园行活动在电子科技大学附属小学举办。 熊孩子工坊的工作人员为孩子们带去了很多有趣的产品，孩子们都乐在其中。 本次活动旨在让小孩子们在动手使用产品的工作中也能开动脑筋思考，在玩
+                            的过程中学习知识培养创新能力
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>熊孩子创客校园行</h3>
+                        <p> 7月2日下午，“熊孩子创客坊”校园行活动在电子科技大学附属小学举办。 熊孩子工坊的工作人员为孩子们带去了很多有趣的产品，孩子们都乐在其中。 本次活动旨在让小孩子们在动手使用产品的工作中也能开动脑筋思考，在玩
+                            的过程中学习知识培养创新能力
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>熊孩子创客校园行</h3>
+                        <p> 7月2日下午，“熊孩子创客坊”校园行活动在电子科技大学附属小学举办。 熊孩子工坊的工作人员为孩子们带去了很多有趣的产品，孩子们都乐在其中。 本次活动旨在让小孩子们在动手使用产品的工作中也能开动脑筋思考，在玩
+                            的过程中学习知识培养创新能力
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav aria-label="test">
+        <ul class="pager">
+            <li><a href="#">Previous</a></li>
+            <li><a href="#">Next</a></li>
+        </ul>
+    </nav>
+
+
+    <!--footer-->
+    <div id="footer" class="footerContainer">
+        <div class="footerContent">
+            <div class="footerLogo">
+                <img src="images/logo.png">
+            </div>
+            <div class="footerText">
+                <p>地址：四川省成都市成华区一环路东一段信息产业大厦</p>
+                <p>联系方式：028-69294535</p>
+                <p>邮箱：contact@makerpanda.com</p>
+                <p>copyright@四川太极熊科技有限公司 2015-2017（蜀ICP备16002137号）</p>
+            </div>
+        </div>
+
     </div>
 
+
+    <!--登录页面-->
+    <div class="mask"></div>
+    <div class="log">
+        <div class="content">
+            <div class="logHeader">
+                <button type="button" class="close"><span>&times;</span></button>
+                <img src="images/logo.png" alt="logo">
+            </div>
+
+            <div class="logBody">
+                <form>
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon"><label class="glyphicon glyphicon-user"></label></span>
+                        <input type="text" class="form-control" placeholder="输入邮箱" aria-describedby="sizing-addon1">
+                    </div>
+
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon"><label class="glyphicon glyphicon-lock"></label></span>
+                        <input type="text" class="form-control" placeholder="输入密码" aria-describedby="sizing-addon1">
+                    </div>
+
+                    <div class="forget"><a>忘记密码？</a></div>
+                </form>
+            </div>
+
+            <div class="logFooter">
+                <button type="button" class="btn btn-primary">登 录</button>
+            </div>
+        </div>
+    </div>
+
+    <!--注册页面-->
+    <div class="mask"></div>
+    <div class="register">
+        <div class="content">
+            <div class="regHeader">
+                <button type="button" class="close"><span>&times;</span></button>
+                <img src="images/logo.png" alt="logo">
+            </div>
+
+            <div class="regBody">
+                <form>
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon"><label class="glyphicon glyphicon-envelope"></label></span>
+                        <input type="text" class="form-control" placeholder="邮箱">
+                    </div>
+
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon"><label class="glyphicon glyphicon-user"></label></span>
+                        <input type="text" class="form-control" placeholder="用户名">
+                    </div>
+
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon"><label class="glyphicon glyphicon-lock"></label></span>
+                        <input type="password" class="form-control" placeholder="密码">
+                    </div>
+
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon"><label class="glyphicon glyphicon-lock"></label></span>
+                        <input type="password" class="form-control" placeholder="确认密码">
+                    </div>
+
+                    <div class="input-group input-group-lg">
+                        <input type="text" class="form-control" placeholder="验证码">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">获取验证码</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <div class="regFooter">
+                <button type="button" class="btn btn-primary">注册</button>
+            </div>
+        </div>
+    </div>
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/index.js"></script>
