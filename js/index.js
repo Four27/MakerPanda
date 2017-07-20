@@ -89,6 +89,7 @@ $(document).ready(function () {
         regClose();
     });
 
+
     // 验证邮箱内容
     function checkEmail(btn) {
         var emailVal = btn.val().trim();
@@ -131,24 +132,66 @@ $(document).ready(function () {
     function checkUserName() {
         var nameInput = $('.regUser input');
         var nameVal = nameInput.val().trim();
-        if(!isUserName) {
+
+        if (!isUserName(nameVal)) {
             nameInput.css({
                 'border-color': 'red'
             });
             nameInput.popover({
-                content: "邮箱不能为空！",
-                placement: "left"
+                content: "用户名格式不正确！",
+                placement: "right"
             });
             nameInput.popover('show');
-            return false;           
+            return false;
         }
         return true;
     }
-
     //验证用户名合法性
     function isUserName(str) {
         var reg = /[0-9a-zA-Z_\@\.\+\-]{1,30}/;
         return reg.test(str);
+    }
+
+    //验证密码格式
+    function checkPassword() {
+        var pwdInput = $('.regPwd input');
+        var pwdVal = pwdInput.val().trim();
+
+        if (!isPassword(pwdVal)) {
+            pwdInput.css({
+                'border-color': 'red'
+            });
+            pwdInput.popover({
+                content: "密码格式不正确！",
+                placement: "right"
+            });
+            pwdInput.popover('show');
+            return false;
+        }
+        return true;
+    }
+    //验证密码合法性
+    function isPassword(str) {
+        var reg = /[0-9a-zA-Z_\@\.\+\-]{1,30}/;
+        return reg.test(str);
+    }
+
+    //判断两次密码是否相同
+    function checkPwdAgain() {
+        var pwdVal = $('.regPwd input').val().trim();
+        var pwdAgainInput = $('.regPwdAgain input');
+        var pwdValAgain = $('.regPwdAgain input').val().trim();
+        if (pwdVal !== pwdValAgain) {
+            pwdAgainInput.css({
+                'border-color': 'red'
+            });
+            pwdAgainInput.popover({
+                content: "两次密码不匹配！",
+                placement: "right"
+            });
+            pwdAgainInput.popover('show');
+            return false;
+        }
     }
 
     //后台返回登录验证信息
@@ -161,34 +204,102 @@ $(document).ready(function () {
                 userId: $('.logEmail input').val(),
                 userPassword: $('.logPwd input').val()
             },
-            success: function(data) {
-                if(data.status === 601) {
+            success: function (data) {
+                if (data.status === 601) {
                     alert(data.errMsg + data.status + "欢迎" + data.jsonStr.userName);
-                    $.cookie('userId',$('.logEmail input').val(),'{path:"/"}');
-                    $.cookie('token',data.token,'{path:"/"}');
+                    $.cookie('userId', $('.logEmail input').val(), '{path:"/"}');
+                    $.cookie('token', data.token, '{path:"/"}');
                 }
                 else {
                     alert(data.errMsg + data.status);
                 }
             },
-            error: function(jqXHR) {
-                alert("发生错误" + jqXHR.status);
+            error: function (jqXHR) {
+                alert("未知错误" + jqXHR.status);
             }
         })
     }
 
+    //后台获取邮箱信息并发送验证码
+    function regVerif() {
+        $.ajax({
+            type: 'post',
+            url: '/userRegister',
+            dataType: 'json',
+            data: {
+                userId: $('.regEmail input').val()
+            },
+            success: function (data) {
+                if (data.status === 601) {
+                    alert(data.errMsg + "请查看邮箱！");
+                }
+                else {
+                    alert(data.errMsg + '请输入其他邮箱！');
+                }
+            },
+            error: function (jqXHR) {
+                alert('未知错误' + jqXHR.status);
+            }
+        })
+    }
+
+    //后台确认注册信息
+    function regConfirm() {
+        $.ajax({
+            type: 'post',
+            url: '/confirmRegister',
+            dataType: 'json',
+            data: {
+                userPassword: $('.regPwd input').val(),
+                verifyCode: $('.regVerif input').val(),
+                userName: $('.regUser input').val(),
+                userId: $('.regEmail input').val()
+            },
+            success: function (data) {
+                if(data.status === 601) {
+                    alert(data.errMsg);
+                }
+                else if(data.status === 602) {
+                    alert(data.errMsg + '剩余验证码可输入次数' +data.remainNum);
+                }
+                else if(data.status === 603) {
+                    alert(data.errMsg + '请重新获取验证码！');
+                }
+                else if(data.status === 605) {
+                    alert(data.errMsg + '请重新获取验证码！');
+                }
+            },
+            error: function(jqXHR) {
+                alert('未知错误:' + jqXHR.errMsg);
+            }
+        })
+    }
+
+
     $('.logPwd input').click(function () {
         var logInput = $('.logEmail input');
         checkEmail(logInput);
-    })
-    $('.logFooter button').click(function() {
-        login();
-    })
-    $('.regUser input').click(function() {
+    });
+    $('.regUser input').click(function () {
         var regBtn = $('.regEmail input');
         checkEmail(regBtn);
-    })
-    $('.regPwd input').click(function() {
+    });
+    $('.logFooter button').click(function () {
+        login();
+    });
+    $('.regPwd input').click(function () {
         checkUserName();
-    })
+    });
+    $('.regPwdAgain input').click(function () {
+        checkPassword();
+    });
+    $('.regVerif button').click(function () {
+        checkPwdAgain();
+    });
+    $('.regVerif button').click(function () {
+        regVerif();
+    });
+    $('.regFooter button').click(function () {
+        regConfirm();
+    });
 });
