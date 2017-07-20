@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     // 登录弹出框
     function logOpen() {
         var mask = $('.mask');
@@ -19,7 +20,6 @@ $(document).ready(function () {
             'top': 0,
             'left': 0
         });
-
         login.css({
             'display': 'flex',
             'top': top + 'px',
@@ -45,7 +45,6 @@ $(document).ready(function () {
     $('.mask').click(function () {
         logClose();
     });
-
 
     // 注册弹出框
     function regOpen() {
@@ -83,34 +82,113 @@ $(document).ready(function () {
     $('#header-register').click(function () {
         regOpen();
     });
-
     $('.close').click(function () {
         regClose();
     });
-
     $('.mask').click(function () {
         regClose();
     });
 
-    function checkEmail() {
-        var emailVal = $('.logEmail').val;
-        if(!isEmail(emailVal)) {
-            $('.logEmail input').css({
+    // 验证邮箱内容
+    function checkEmail(btn) {
+        var emailVal = btn.val().trim();
+
+        if (!emailVal) {
+            btn.css({
                 'border-color': 'red'
             });
-            
+            btn.popover({
+                content: "邮箱不能为空！",
+                placement: "right"
+            });
+            btn.popover('show');
             return false;
+        } else if (!isEmail(emailVal)) {
+            btn.css({
+                'border-color': 'red'
+            });
+            btn.popover({
+                content: "邮箱格式不正确！",
+                placement: "right"
+            });
+            btn.popover('show');
+            return false;
+        } else if (emailVal && isEmail(emailVal)) {
+            btn.css({
+                'border-color': '#ccc'
+            });
+            btn.popover('hide');
         }
         return true;
     }
-
+    //验证邮箱格式的合法性
     function isEmail(str) {
         var reg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
         return reg.test(str);
     }
 
+    //验证用户名内容
+    function checkUserName() {
+        var nameInput = $('.regUser input');
+        var nameVal = nameInput.val().trim();
+        if(!isUserName) {
+            nameInput.css({
+                'border-color': 'red'
+            });
+            nameInput.popover({
+                content: "邮箱不能为空！",
+                placement: "left"
+            });
+            nameInput.popover('show');
+            return false;           
+        }
+        return true;
+    }
+
+    //验证用户名合法性
+    function isUserName(str) {
+        var reg = /[0-9a-zA-Z_\@\.\+\-]{1,30}/;
+        return reg.test(str);
+    }
+
+    //后台返回登录验证信息
+    function login() {
+        $.ajax({
+            type: "post",
+            url: "/userLogin",
+            dataType: "json",    //指定数据处理方式
+            data: {
+                userId: $('.logEmail input').val(),
+                userPassword: $('.logPwd input').val()
+            },
+            success: function(data) {
+                if(data.status === 601) {
+                    alert(data.errMsg + data.status + "欢迎" + data.jsonStr.userName);
+                    $.cookie('userId',$('.logEmail input').val(),'{path:"/"}');
+                    $.cookie('token',data.token,'{path:"/"}');
+                }
+                else {
+                    alert(data.errMsg + data.status);
+                }
+            },
+            error: function(jqXHR) {
+                alert("发生错误" + jqXHR.status);
+            }
+        })
+    }
+
+    $('.logPwd input').click(function () {
+        var logInput = $('.logEmail input');
+        checkEmail(logInput);
+    })
     $('.logFooter button').click(function() {
-        checkEmail();
+        login();
+    })
+    $('.regUser input').click(function() {
+        var regBtn = $('.regEmail input');
+        checkEmail(regBtn);
+    })
+    $('.regPwd input').click(function() {
+        checkUserName();
     })
 });
-
