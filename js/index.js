@@ -89,22 +89,51 @@ $(document).ready(function () {
         regClose();
     });
 
-    //找回密码弹出框
+    // 修改密码弹出框
+    function resetOpen() {
+        var mask = $('.mask');
+        var reset = $('.reset');
+
+        var sWidth = $(document.body).outerWidth();
+        var sHeight = $(document.body).outerHeight();
+        var cHeight = $(window).height();
+        var lWidth = reset.width();
+        var lHeight = reset.height();
+        var left = (sWidth - lWidth) / 2;
+        var top = (cHeight - lHeight) / 2;
+
+        mask.css({
+            'display': 'block',
+            'width': 'sWidth' + 'px',
+            'height': 'sHeight' + 'px'
+        });
+
+        reset.css({
+            'display': 'flex',
+            'top': top + 'px',
+            'left': left + 'px'
+        });
+    }
+
+    function resetClose() {
+        var mask = $('.mask');
+        var reset = $('.reset');
+        mask.css('display', 'none');
+        reset.css('display', 'none');
+    }
+
     $('.logBody .forget').click(function () {
-        $('.logBody form').html(' <div class="input-group input-group-lg forgetEmail"><span class="input-group-addon"><label class="glyphicon glyphicon-envelope"></label></span><input type="text" class="form-control" placeholder="输入邮箱" aria-describedby="sizing-addon1"></div><div class="input-group input-group-lg remind"><p>验证码将会发送至你的注册邮箱</p></div>');
-        $('.logFooter').html('<button type="button" class="btn btn-primary forgetBtn">获取验证码</button>');
+        logClose();
+        resetOpen();
+    });
+    $('.close').click(function () {
+        resetClose();
+    });
+    $('.mask').click(function () {
+        resetClose();
     });
 
 
-    //修改密码弹出框
-    $('.logFooter').click(function () {
-        $('.logBody form').html('<div class="input-group input-group-lg change changePwd"><span class="input-group-addon"><label class="glyphicon glyphicon-lock"></label></span><input type="password" class="form-control" placeholder="新密码"></div><div class="input-group input-group-lg change changePwdAgain"><span class="input-group-addon"><label class="glyphicon glyphicon-lock"></label></span><input type="password" class="form-control" placeholder="确认密码"></div><div class="input-group input-group-lg change regVerif"><input type="text" class="form-control" placeholder="验证码"><span class="input-group-btn"><button class="btn btn-default" type="button">重发验证码</button></span></div>');
-        $('.logFooter').html('<button type="button" class="btn btn-primary changeBtn">修改密码</button>');
-        $('.logBody .input-group').css({
-            'height':'60%',
-            'margin-top':'-14px'
-        })
-    })
 
     // 验证邮箱内容
     function checkEmail(btn) {
@@ -169,10 +198,8 @@ $(document).ready(function () {
     }
 
     //验证密码格式
-    function checkPassword() {
-        var pwdInput = $('.regPwd input');
+    function checkPassword(pwdInput) {
         var pwdVal = pwdInput.val().trim();
-
         if (!isPassword(pwdVal)) {
             pwdInput.css({
                 'border-color': 'red'
@@ -193,10 +220,9 @@ $(document).ready(function () {
     }
 
     //判断两次密码是否相同
-    function checkPwdAgain() {
-        var pwdVal = $('.regPwd input').val().trim();
-        var pwdAgainInput = $('.regPwdAgain input');
-        var pwdValAgain = $('.regPwdAgain input').val().trim();
+    function checkPwdAgain(pwdVal, pwdAgainInput) {
+        var pwdValAgain = pwdAgainInput.val().trim();
+
         if (pwdVal !== pwdValAgain) {
             pwdAgainInput.css({
                 'border-color': 'red'
@@ -208,6 +234,7 @@ $(document).ready(function () {
             pwdAgainInput.popover('show');
             return false;
         }
+        return true;
     }
 
     //后台返回登录验证信息
@@ -286,63 +313,118 @@ $(document).ready(function () {
                 }
             },
             error: function (jqXHR) {
-                alert('未知错误:' + jqXHR.errMsg);
+                alert('未知错误:' + jqXHR.status);
             }
         })
     }
 
     //后台返回找回密码状态
-    function retriPwd() {
-        var emailVal = $('.forgetEmail').val().trim();
-        checkEmail(emailVal);
+    function resetVerif() {
         $.ajax({
-            type:'post',
-            url:'/forgetPassword',
-            dataType:'json',
+            type: 'post',
+            url: '/forgetPassword',
+            dataType: 'json',
             data: {
-                userId: emailVal
+                userId: $('.resetEmail input').val()
             },
-            success:function(data) {
-                if(data.status === 601) {
+            success: function (data) {
+                if (data.status === 601) {
                     alert(data.errMsg);
                 }
                 else {
                     alert(data.errMsg);
                 }
             },
-            error: function(jqXHR) {
-                alert('未知错误：' + jqXHR.errMsg);
+            error: function (jqXHR) {
+                alert('未知错误：' + jqXHR.status);
             }
         })
     }
+
+    //后台返回修改密码
+    function resetPwd() {
+        $.ajax({
+            type: 'post',
+            url: '/resetPassword',
+            dataType: 'json',
+            data: {
+                userPassword: $('.changePwd').val(),
+                verifyCode: $('.changeVerif').val(),
+                userId: $('.forgetEmail').val()
+            },
+            success: function (data) {
+                if (data.status === 601) {
+                    alert(data.errMsg);
+                }
+                else if (data.status === 602) {
+                    alert(data.errMsg + '剩余输入次数' + data.remainNum);
+                }
+                else if (data.status === 603) {
+                    alert(data.errMsg + '请重新获取验证码！');
+                }
+                else {
+                    alert(data.errMsg + '请重新获取验证码！');
+                }
+            },
+            error: function (jqXHR) {
+                alert('未知错误：' + jqXHR.status);
+            }
+        })
+    }
+
 
     $('.logPwd input').click(function () {
         var logInput = $('.logEmail input');
         checkEmail(logInput);
     });
+    $('.logFooter button').click(function () {
+        login();
+    });
+
     $('.regUser input').click(function () {
         var regBtn = $('.regEmail input');
         checkEmail(regBtn);
-    });
-    $('.logFooter button').click(function () {
-        login();
     });
     $('.regPwd input').click(function () {
         checkUserName();
     });
     $('.regPwdAgain input').click(function () {
-        checkPassword();
+        var pwdInput = $('.regPwd input');
+        checkPassword(pwdInput);
     });
-    $('.regVerif button').click(function () {
-        checkPwdAgain();
+    $('.regFooter button').click(function () {
+        var pwdAgainInput = $('.regPwdAgain input')
+        var pwdVal = $('.regPwd input').val().trim();
+        if (!checkPwdAgain(pwdVal, pwdAgainInput)) {
+            checkPwdAgain(pwdVal, pwdAgainInput);
+        }
+        else {
+            regConfirm();
+        }
     });
     $('.regVerif button').click(function () {
         regVerif();
     });
-    $('.regFooter button').click(function () {
-        regConfirm();
+
+    $('.resetPwd input').click(function () {
+        var resetInput = $('.resetEmail input');
+        checkEmail(resetInput);
     });
-    $('.logFooter').click(function () {
-        retriPwd();
+    $('.resetPwdAgain input').click(function () {
+        var pwdInput = $('.resetPwd input');
+        checkPassword(pwdInput);
+    });
+    $('.resetFooter button').click(function () {
+        var pwdAgainInput = $('.resetPwdAgain input')
+        var pwdVal = $('.resetPwd input').val().trim();
+        if (!checkPwdAgain(pwdVal, pwdAgainInput)) {
+            checkPwdAgain(pwdVal, pwdAgainInput);
+        }
+        else {
+            regConfirm();
+        }
+    });
+    $('.resetVerif button').click(function () {
+        resetVerif();
     });
 });

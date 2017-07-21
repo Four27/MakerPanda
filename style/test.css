@@ -1,4 +1,4 @@
-.log {
+/*.log {
     position:fixed;
     width:400px;
     height: 350px;
@@ -31,13 +31,13 @@
     margin-left: 20px;
 }
 
-/*.logBody .input-group {
+.logBody .input-group {
     width: 75%;
     margin: 0 auto;
     margin-bottom: 30px;
-}*/
+}
 
-/*.logBody .forget {
+.logBody .forget {
     padding-left: 70%;
     margin-top: -15px;
     margin-bottom: 5px;
@@ -45,7 +45,7 @@
 
 .logBody .forget a {
   cursor: pointer;
-}*/
+}
 
 .logFooter {
     display: flex;
@@ -81,4 +81,58 @@
     width: 78%;
     margin: 0 auto;
     margin-bottom: 15px;
+}*/
+/*注册界面*/
+.reset{
+    position:fixed;
+    width:400px;
+    height: 485px;
+    border: 1px solid #999;
+    border-radius: 6px;
+    z-index:9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#fff;
+    background-color: rebeccapurple;
+}
+.reset .content {
+    width: 400px;
+    height: 485px;
+    background-color: red;
+}
+
+.resetHeader {
+    background-color: #FF8200;
+    margin-bottom: 25px;
+    height: 60px;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+.resetHeader > img {
+    display: block;
+    width: 45px;
+    height: 45px;
+    margin-left: 20px;
+}
+
+.resetBody .input-group {
+    width: 78%;
+    margin: 0 auto;
+    margin-bottom: 22px;
+}
+
+.resetFooter {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.resetFooter .btn {
+    display: block;
+    width: 60%;
+    height: 40px;
+    background-color: #FF8200;
+    border: 1px solid #FF8200;
+    font-size: 19px;
 }

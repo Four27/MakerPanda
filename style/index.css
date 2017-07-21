@@ -233,7 +233,7 @@ body {
 }
 
 /*注册界面*/
-.register{
+.register, .reset{
     position:fixed;
     width:400px;
     height: 485px;
@@ -246,12 +246,12 @@ body {
     background-color:#fff;
 }
 
-.register .content {
+.register .content, .reset .content {
     width: 400px;
     height: 485px;
 }
 
-.regHeader {
+.regHeader, .resetHeader {
     background-color: #FF8200;
     margin-bottom: 25px;
     height: 60px;
@@ -259,26 +259,26 @@ body {
     padding-right: 10px;
 }
 
-.regHeader > img {
+.regHeader > img, .resetHeader > img {
     display: block;
     width: 45px;
     height: 45px;
     margin-left: 20px;
 }
 
-.regBody .input-group {
+.regBody .input-group, .resetBody .input-group {
     width: 78%;
     margin: 0 auto;
     margin-bottom: 22px;
 }
 
-.regFooter {
+.regFooter, .resetFooter {
     display: flex;
     width: 100%;
     justify-content: center;
 }
 
-.regFooter .btn {
+.regFooter .btn, .resetFooter .btn {
     display: block;
     width: 60%;
     height: 40px;
@@ -287,20 +287,11 @@ body {
     font-size: 19px;
 }
 
- /*找回密码页面*/
- .forgetEmail {
-    width: 75%;
+.resetBody .remind {
+    width: 78%;
+    height: 40px;
     margin: 0 auto;
-    margin-top: 60px;
-    margin-bottom: 20px;
-}
-.remind {
-    width: 75%;
-    margin:  0 auto;
-    margin-bottom: 10px;
     text-align: center;
     font-size: 16px;
     color: #999;
 }
-
-  /*修改密码页面*/
