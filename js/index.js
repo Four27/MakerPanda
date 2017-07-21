@@ -89,6 +89,22 @@ $(document).ready(function () {
         regClose();
     });
 
+    //找回密码弹出框
+    $('.logBody .forget').click(function () {
+        $('.logBody form').html(' <div class="input-group input-group-lg forgetEmail"><span class="input-group-addon"><label class="glyphicon glyphicon-envelope"></label></span><input type="text" class="form-control" placeholder="输入邮箱" aria-describedby="sizing-addon1"></div><div class="input-group input-group-lg remind"><p>验证码将会发送至你的注册邮箱</p></div>');
+        $('.logFooter').html('<button type="button" class="btn btn-primary forgetBtn">获取验证码</button>');
+    });
+
+
+    //修改密码弹出框
+    $('.logFooter').click(function () {
+        $('.logBody form').html('<div class="input-group input-group-lg change changePwd"><span class="input-group-addon"><label class="glyphicon glyphicon-lock"></label></span><input type="password" class="form-control" placeholder="新密码"></div><div class="input-group input-group-lg change changePwdAgain"><span class="input-group-addon"><label class="glyphicon glyphicon-lock"></label></span><input type="password" class="form-control" placeholder="确认密码"></div><div class="input-group input-group-lg change regVerif"><input type="text" class="form-control" placeholder="验证码"><span class="input-group-btn"><button class="btn btn-default" type="button">重发验证码</button></span></div>');
+        $('.logFooter').html('<button type="button" class="btn btn-primary changeBtn">修改密码</button>');
+        $('.logBody .input-group').css({
+            'height':'60%',
+            'margin-top':'-14px'
+        })
+    })
 
     // 验证邮箱内容
     function checkEmail(btn) {
@@ -256,25 +272,49 @@ $(document).ready(function () {
                 userId: $('.regEmail input').val()
             },
             success: function (data) {
-                if(data.status === 601) {
+                if (data.status === 601) {
                     alert(data.errMsg);
                 }
-                else if(data.status === 602) {
-                    alert(data.errMsg + '剩余验证码可输入次数' +data.remainNum);
+                else if (data.status === 602) {
+                    alert(data.errMsg + '剩余验证码可输入次数' + data.remainNum);
                 }
-                else if(data.status === 603) {
+                else if (data.status === 603) {
                     alert(data.errMsg + '请重新获取验证码！');
                 }
-                else if(data.status === 605) {
+                else if (data.status === 605) {
                     alert(data.errMsg + '请重新获取验证码！');
                 }
             },
-            error: function(jqXHR) {
+            error: function (jqXHR) {
                 alert('未知错误:' + jqXHR.errMsg);
             }
         })
     }
 
+    //后台返回找回密码状态
+    function retriPwd() {
+        var emailVal = $('.forgetEmail').val().trim();
+        checkEmail(emailVal);
+        $.ajax({
+            type:'post',
+            url:'/forgetPassword',
+            dataType:'json',
+            data: {
+                userId: emailVal
+            },
+            success:function(data) {
+                if(data.status === 601) {
+                    alert(data.errMsg);
+                }
+                else {
+                    alert(data.errMsg);
+                }
+            },
+            error: function(jqXHR) {
+                alert('未知错误：' + jqXHR.errMsg);
+            }
+        })
+    }
 
     $('.logPwd input').click(function () {
         var logInput = $('.logEmail input');
@@ -301,5 +341,8 @@ $(document).ready(function () {
     });
     $('.regFooter button').click(function () {
         regConfirm();
+    });
+    $('.logFooter').click(function () {
+        retriPwd();
     });
 });

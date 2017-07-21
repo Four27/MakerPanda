@@ -1,16 +1,19 @@
-/*.log {
-    width: 100%;
-    height: 600px;
-    display: none;
+.log {
+    position:fixed;
+    width:400px;
+    height: 350px;
+    display: flex;
     justify-content: center;
     align-items: center;
+    z-index:9999;
+    border: 1px solid #999;
+    border-radius: 6px;
+    background-color:#fff;
 }
 
 .content {
     width: 400px;
     height: 350px;
-    border: 1px solid #999;
-    border-radius: 6px;
 }
 
 .logHeader {
@@ -28,22 +31,41 @@
     margin-left: 20px;
 }
 
-.logBody .input-group {
+/*.logBody .input-group {
     width: 75%;
     margin: 0 auto;
     margin-bottom: 30px;
-}
+}*/
 
-.logBody .forget {
+/*.logBody .forget {
     padding-left: 70%;
     margin-top: -15px;
     margin-bottom: 5px;
 }
 
+.logBody .forget a {
+  cursor: pointer;
+}*/
+
 .logFooter {
     display: flex;
     width: 100%;
     justify-content: center;
+}
+
+.forgetEmail {
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+.remind {
+    width: 75%;
+    margin:  0 auto;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 16px;
+    color: #999;
 }
 
 .logFooter .btn {
@@ -52,87 +74,11 @@
     height: 40px;
     background-color: #FF8200;
     border: 1px solid #FF8200;
+    font-size: 18px;
 }
 
-.mask{ 
-    background-color:#000;
-    opacity:0.2;
-    filter: alpha(opacity=50); 
-    position:absolute; 
-    left:0;
-    top:0;
-    z-index:-20;
-    display:block;
-    width: 100%;
-    height: 628px;
-}*/
-
-
-.register{
-    position:fixed;
-    width:400px;
-    height: 480px;
-
-    border: 1px solid #999;
-    border-radius: 6px;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    background-color:#fff;
-}
-
-.register .content {
-    width: 400px;
-    height: 480px;
-}
-
-.regHeader {
-    background-color: #FF8200;
-    margin-bottom: 25px;
-    height: 60px;
-    padding-top: 10px;
-    padding-right: 10px;
-}
-
-.regHeader > img {
-    display: block;
-    width: 45px;
-    height: 45px;
-    margin-left: 20px;
-}
-
-.regBody .input-group {
+.change {
     width: 78%;
     margin: 0 auto;
-    margin-bottom: 22px;
-}
-
-.regFooter {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-}
-
-.regFooter .btn {
-    display: block;
-    width: 60%;
-    height: 40px;
-    background-color: #FF8200;
-    border: 1px solid #FF8200;
-    font-size: 19px;
-}
-
-
-
-.mask{ 
-    background-color:#000;
-    opacity:0.2;
-    filter: alpha(opacity=50); 
-    position:absolute; 
-    left:0;
-    top:0;
-    z-index:-20;
-    display:none;
-    width: 100%;
-    height: 628px;
+    margin-bottom: 15px;
 }

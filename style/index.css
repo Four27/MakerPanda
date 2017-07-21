@@ -213,6 +213,10 @@ body {
     margin-bottom: 5px;
 }
 
+.logBody .forget a {
+  cursor: pointer;
+}
+
 .logFooter {
     display: flex;
     width: 100%;
@@ -282,3 +286,21 @@ body {
     border: 1px solid #FF8200;
     font-size: 19px;
 }
+
+ /*找回密码页面*/
+ .forgetEmail {
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+.remind {
+    width: 75%;
+    margin:  0 auto;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 16px;
+    color: #999;
+}
+
+  /*修改密码页面*/

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>forget</title>
+    <link rel="stylesheet" href="style/test.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="log">
+        <div class="content">
+            <div class="logHeader">
+                <button type="button" class="close"><span>&times;</span></button>
+                <img src="images/logo.png" alt="logo">
+            </div>
+
+            <div class="logBody">
+                <form>
+                    <div class="input-group input-group-lg change changePwd">
+                        <span class="input-group-addon"><label class="glyphicon glyphicon-lock"></label></span>
+                        <input type="password" class="form-control" placeholder="新密码">
+                    </div>
+
+                    <div class="input-group input-group-lg change changePwdAgain">
+                        <span class="input-group-addon"><label class="glyphicon glyphicon-lock"></label></span>
+                        <input type="password" class="form-control" placeholder="确认密码">
+                    </div>
+
+                    <div class="input-group input-group-lg change regVerif">
+                        <input type="text" class="form-control" placeholder="验证码">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default changeBtn" type="button">重发验证码</button>
+                        </span>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="logFooter">
+                <button type="button" class="btn btn-primary changeBtn">修改密码</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
