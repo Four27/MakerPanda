@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     // 登录弹出框
     function logOpen() {
         var mask = $('.mask');
