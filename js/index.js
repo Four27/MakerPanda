@@ -193,7 +193,7 @@ $(document).ready(function () {
     }
     //验证用户名合法性
     function isUserName(str) {
-        var reg = /[0-9a-zA-Z_\@\.\+\-]{1,30}/;
+        var reg = /[0-9a-zA-Z_\@\.\+\-]{1,20}/;
         return reg.test(str);
     }
 
@@ -215,7 +215,7 @@ $(document).ready(function () {
     }
     //验证密码合法性
     function isPassword(str) {
-        var reg = /[0-9a-zA-Z_\@\.\+\-]{1,30}/;
+        var reg = /[0-9a-zA-Z_\@\.\+\-]{1,20}/;
         return reg.test(str);
     }
 
