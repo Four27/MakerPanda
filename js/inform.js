@@ -24,7 +24,7 @@ $(document).ready(function () {
                         $('.page .pagination').append('<li><a href="#">' + count + '</a></li>');
                         count++;
                     }
-                    $('.page ul').append('<li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>');
+                    $('.page ul').append('<li class="' + count + '"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>');
 
                     for (var i = 0; i < articleLen; i++) {
                         var article = list[i].artiTitle.artiData.replace(re1, '');
@@ -41,20 +41,21 @@ $(document).ready(function () {
                 alert('未知错误：' + jqXHR.status);
             }
         });
-        
     });
 
+    $()
 
-    // var string = ['大家哈迪噢扫ID梵高还得分工好大夫', '杰克金多或若过或错', 'q', '2', 'r', 'sdfsdf'];
-    // var num = parseInt(string.length / 2);
-    // var num2 = string.length % 2;
-    // alert(num2);
+// test
+    var string = ['大家哈迪噢扫ID梵高还得分工好大夫', '杰克金多或若过或错', 'q', '2', 'r', 'sdfsdf'];
+    var num = parseInt(string.length / 2);
+    var num2 = string.length % 2;
+    alert(num2);
 
 
-    // var count = 1;
-    // for (var n = 0; n < 4; n++) {
-    //     $('.page ul').append('<li><a href="#">' + count + '</a></li>')
-    //     count++;
-    // }
-    // $('.page ul').append('<li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>')
+    var count = 1;
+    for (var n = 0; n < 4; n++) {
+        $('.page ul').append('<li><a href="#">' + count + '</a></li>')
+        count++;
+    }
+    $('.page ul').append('<li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>')
 });
