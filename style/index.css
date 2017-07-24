@@ -87,8 +87,10 @@ body {
 }
 
 .main .title {
-  height: 30px;
+  height: 40px;
   margin: 20px 40px;
+  border-bottom: 2px solid #CBCBCB;
+  padding-bottom: 45px;
 }
 
 .main .title > p {
@@ -110,8 +112,18 @@ body {
   padding-bottom: 10px; 
   margin-top: 10px;
 }
+.caption > h3 > a {
+  color: #FF8200;
+}
+.caption > h3 > a:hover {
+  color: #FF9933;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 .page {
+  margin: 0 auto;
+  width: 145px;
   text-align: center;
 }
 
@@ -125,7 +137,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 200px;
-  /*background-color: red;*/
 }
 .footerLogo{
   width: 120px;

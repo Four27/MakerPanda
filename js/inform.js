@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    // 新闻列表
+    //新闻列表
     var page = 1;
     var pageNumber = 0;
 
@@ -28,8 +28,8 @@ $(document).ready(function () {
 
                     for (var i = 0; i < articleLen; i++) {
                         var article = list[i].artiTitle.artiData.replace(re1, '');
-                        var inform = '<div class="col-sm-6 col-md-4"><div class="thumbnail"><div class="caption"><h3>' +
-                            list[i].artiTitle + '</h3><p>' + article.substr(0, 50) + '</p></div></div></div>'
+                        var inform = '<div class="col-sm-6 col-md-4"><div class="thumbnail"><div class="caption"><h3><a id="' + list[i].artiId + '">'
+                            list[i].artiTitle + '</a></h3><p>' + article.substr(0, 50) + '</p></div></div></div>'
                         $('.main .content').append(inform);
                     }
                 }
@@ -66,8 +66,8 @@ $(document).ready(function () {
                         var re1 = new RegExp("<.+?>", "g");
 
                         var article = list[0].artiTitle.artiData.replace(re1, '');
-                        var inform = '<div class="col-sm-6 col-md-4"><div class="thumbnail"><div class="caption"><h3>' +
-                            list[0].artiTitle + '</h3><p>' + article.substr(0, 50) + '</p></div></div></div>';
+                        var inform = '<div class="col-sm-6 col-md-4"><div class="thumbnail"><div class="caption"><h3><a id="' + list[i].artiId + '">' +
+                            list[0].artiTitle + '</a></h3><p>' + article.substr(0, 50) + '</p></div></div></div>';
                         $('.main .content').html(inform);
 
                         for (var i = 1; i < articleLen; i++) {
@@ -111,14 +111,14 @@ $(document).ready(function () {
                         var re1 = new RegExp("<.+?>", "g");
 
                         var article = list[0].artiTitle.artiData.replace(re1, '');
-                        var inform = '<div class="col-sm-6 col-md-4"><div class="thumbnail"><div class="caption"><h3>' +
-                            list[0].artiTitle + '</h3><p>' + article.substr(0, 50) + '</p></div></div></div>';
+                        var inform = '<div class="col-sm-6 col-md-4"><div class="thumbnail"><div class="caption"><h3><a id="' + list[i].artiId + '">' +
+                            list[0].artiTitle + '</a></h3><p>' + article.substr(0, 50) + '</p></div></div></div>';
                         $('.main .content').html(inform);
 
                         for (var i = 1; i < articleLen; i++) {
                             var article = list[i].artiTitle.artiData.replace(re1, '');
-                            var inform = '<div class="col-sm-6 col-md-4"><div class="thumbnail"><div class="caption"><h3>' +
-                                list[i].artiTitle + '</h3><p>' + article.substr(0, 50) + '</p></div></div></div>';
+                            var inform = '<div class="col-sm-6 col-md-4"><div class="thumbnail"><div class="caption"><h3><a>' +
+                                list[i].artiTitle + '</a></h3><p>' + article.substr(0, 50) + '</p></div></div></div>';
                             $('.main .content').append(inform);
                         }
                     }
@@ -133,5 +133,10 @@ $(document).ready(function () {
         });
     });
 
-    // 新闻详情
+    // 新闻详情页面跳转
+    $('.col-sm-6 .caption h3 a').on('click',function () {
+        var articleId = $(this).attr('id');
+        var url = 'article.html?artiId=' +  articleId;
+        window.open(url);
+    })
 });
