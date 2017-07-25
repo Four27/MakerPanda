@@ -1,0 +1,150 @@
+body {
+    background-color: #CBCBCB;
+}
+
+.nav {
+  padding-left: 0px;
+  margin-bottom: 0;
+  list-style: none;
+}
+.navbar-default {
+  background-color: #FF8200;
+  border-color: #FF9933;
+}
+
+.navbar-default .navbar-brand > img {
+  display: block;
+  width: 50px;
+  height: 45px;
+  margin-top: -15px;
+  margin-left: 30px; 
+}
+
+.navbar-default .navbar-nav > li {
+    margin-right: 30px;
+}
+.navbar-default .navbar-right > li {
+    margin-right: 0;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #FFF;
+  font-size: 18px;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #FFF;
+  background-color: #FF9933;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #FFF;
+  background-color: #FF9933;
+}
+.navbar-brand {
+  float: left;
+  height: 50px;
+  padding: 20px 70px;
+  font-size: 18px;
+  line-height: 20px;
+}
+.navbar {
+  position: relative;
+  min-height: 60px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+}
+.navbar-nav > li > a {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  line-height: 30px;
+}
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    float: left;
+    margin: 0;
+  }
+  .navbar-nav > li {
+    float: left;
+  }
+  .navbar-nav > li > a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:80%;
+    height:100%;
+    border: 1px solid #E3E1DF;
+    background-color: #E3E1DF;
+
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.main .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 90%;
+  border-bottom: 1px solid #CBCBCB;
+  margin-bottom: 10px;
+  
+}
+.main .title > div {
+  font-size: 22px;
+  color: #FF8200;
+}
+.main .time {
+  display: flex;
+  width: 30%;
+  margin-bottom: -30px;
+}
+.main .time > div {
+  display: flex;
+  justify-content: center;
+  flex-basis: 100%;
+  color: black;
+  font-size: 15px;
+}
+.main .time .pubtime, .main .time .admin{
+  color:#FF8200;
+}
+.main .content {
+  margin: 35px 9%;
+  font-size: 18px; 
+}
+
+.footerContainer {
+  height: 200px;
+  background-color: #FF8200;
+  margin-bottom: 0;
+}
+.footerContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+.footerLogo{
+  width: 120px;
+  height: 150px;
+  border-right: 1px solid #FFF; 
+}
+.footerLogo > img {
+  width: 100px;
+  height: 100px;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+.footerText {
+  padding-left: 40px;
+  color: #FFF;
+}
