@@ -1,8 +1,9 @@
+//新闻列表显示
 $(document).ready(function () {
-    //新闻列表
     var page = 1;
     var pageNumber = 0;
 
+    //默认第一页
     $(function getArticle() {
         $.ajax({
             type: 'post',
@@ -44,6 +45,7 @@ $(document).ready(function () {
         });
     });
 
+    //下一页
     $('.next').click(function () {
         $(function getArticle(page) {
             page++;
@@ -92,6 +94,7 @@ $(document).ready(function () {
         });
     });
 
+    //上一页
     $('.previous').click(function () {
         $(function getArticle(page) {
             page--;
@@ -145,8 +148,8 @@ $(document).ready(function () {
         var id = $(this).attr('id');
         var number = $(this).attr('class');
 
-        $.cookie('artiId', id, {path:"/"});
-        $.cookie('pageNum', number, {path:"/"});
+        $.cookie('artiId', id, { path: "/" });
+        $.cookie('pageNum', number, { path: "/" });
 
         var url = 'article.html?artiId=' + id;
         window.open(url);
