@@ -1,3 +1,4 @@
+//登录注册
 $(document).ready(function () {
     // 登录弹出框
     function logOpen() {
@@ -249,6 +250,8 @@ $(document).ready(function () {
             success: function (data) {
                 if (data.status === 601) {
                     alert(data.errMsg + data.status + "欢迎" + data.jsonStr.userName);
+                    logClose();
+                    
                     $.cookie('userId', $('.logEmail input').val(), '{path:"/"}');
                     $.cookie('token', data.token, '{path:"/"}');
                 }
@@ -391,16 +394,7 @@ $(document).ready(function () {
         var pwdInput = $('.regPwd input');
         checkPassword(pwdInput);
     });
-    $('.regFooter button').click(function () {
-        var pwdAgainInput = $('.regPwdAgain input')
-        var pwdVal = $('.regPwd input').val().trim();
-        if (!checkPwdAgain(pwdVal, pwdAgainInput)) {
-            checkPwdAgain(pwdVal, pwdAgainInput);
-        }
-        else {
-            regConfirm();
-        }
-    });
+
     $('.regVerif button').click(function () {
         regVerif();
     });
