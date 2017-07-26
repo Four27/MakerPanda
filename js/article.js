@@ -1,3 +1,4 @@
+//新闻详情页面
 $(document).ready(function () {
     var id = $.cookie('artiId');
     var number = $.cookie('pageNum');
