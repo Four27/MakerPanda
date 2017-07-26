@@ -102,6 +102,7 @@ body {
   font-size: 22px;
   color: #FF8200;
 }
+
 .main .time {
   display: flex;
   width: 30%;
@@ -114,9 +115,11 @@ body {
   color: black;
   font-size: 15px;
 }
-.main .time .pubtime, .main .time .admin{
+.main .time .pubtime, 
+.main .time .admin {
   color:#FF8200;
 }
+
 .main .content {
   margin: 35px 9%;
   font-size: 18px; 
