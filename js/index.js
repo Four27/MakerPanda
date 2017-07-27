@@ -1,5 +1,13 @@
 //登录注册
 $(document).ready(function () {
+    $(function () {
+        if ($.cookie('username') && $.cookie('username') !== 'null') {
+            $('.navbar .navbar-right').html('<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'
+                                             + $.cookie('username') +
+                                            '</a><ul class="dropdown-menu"><li><a class="exit">退出登录</a></li> </ul></li>');
+        }
+    })
+
     // 登录弹出框
     function logOpen() {
         var mask = $('.mask');
@@ -145,8 +153,9 @@ $(document).ready(function () {
             });
             btn.popover({
                 content: "邮箱不能为空！",
-                placement: "right"
+                placement: "right",
             });
+
             btn.popover('show');
             return false;
         } else if (!isEmail(emailVal)) {
@@ -249,11 +258,13 @@ $(document).ready(function () {
             },
             success: function (data) {
                 if (data.status === 601) {
-                    alert(data.errMsg + data.status + "欢迎" + data.jsonStr.userName);
-                    logClose();
-                    
-                    $.cookie('userId', $('.logEmail input').val(), '{path:"/"}');
+                    username = data.jsonStr.userName;
+                    $.cookie('username', username, '{path:"/"}');
                     $.cookie('token', data.token, '{path:"/"}');
+
+                    logClose();
+
+                    $('.navbar .navbar-right').html('<li><a>' + username + '</a></li>');
                 }
                 else {
                     alert(data.errMsg + data.status);
@@ -302,6 +313,8 @@ $(document).ready(function () {
             },
             success: function (data) {
                 if (data.status === 601) {
+                    regClose();
+
                     alert(data.errMsg);
                 }
                 else if (data.status === 602) {
@@ -374,7 +387,7 @@ $(document).ready(function () {
         })
     }
 
-
+    //触发登录框中的函数
     $('.logPwd input').click(function () {
         var logInput = $('.logEmail input');
         checkEmail(logInput);
@@ -383,6 +396,7 @@ $(document).ready(function () {
         login();
     });
 
+    //触发注册框中的函数
     $('.regUser input').click(function () {
         var regBtn = $('.regEmail input');
         checkEmail(regBtn);
@@ -394,11 +408,14 @@ $(document).ready(function () {
         var pwdInput = $('.regPwd input');
         checkPassword(pwdInput);
     });
-
     $('.regVerif button').click(function () {
         regVerif();
     });
+    $('.regFooter button').click(function () {
+        regConfirm();
+    })
 
+    //触发修改密码中的函数
     $('.resetPwd input').click(function () {
         var resetInput = $('.resetEmail input');
         checkEmail(resetInput);
@@ -420,4 +437,11 @@ $(document).ready(function () {
     $('.resetVerif button').click(function () {
         resetVerif();
     });
+
+    //退出登录框(动态生成元素的事件绑定方式)
+    $(document).on('click', '.exit', function () {
+        $('.navbar .navbar-right').html('<li id="header-register"><a href="#">注册</a></li><li id="header-signin"><a href="#">登录</a></li>');
+        $.cookie('username', null);
+        $.cookie('token', null);
+    })
 });
