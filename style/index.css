@@ -59,6 +59,9 @@ body {
   padding-bottom: 10px;
   line-height: 30px;
 }
+.navbar .navbar-right {
+  padding-right: 50px;
+}
 
 .carousel {
     background-color: #CBCBCB;
@@ -76,13 +79,13 @@ body {
 .main {
     display: flex;
     flex-direction: column;
-    width:85%;
+    width:78%;
     height:100%;
     border: 1px solid #E3E1DF;
     background-color: #E3E1DF;
 
     margin: 0 auto;
-    margin-top: 30px;
+    margin-top: 48px;
     margin-bottom: 30px;
 }
 
@@ -99,8 +102,7 @@ body {
 }
 
 .main .content {
-  margin-right: 15px;
-  margin-left: 15px;
+  margin: 12px 15px 18px 15px;
 }
 
 .main > nav {
@@ -183,7 +185,7 @@ body {
 
 .mask{ 
     background-color:#000;
-    opacity:0.6;
+    opacity:0.4;
     filter: alpha(opacity=50); 
     position:absolute; 
     left:0;
