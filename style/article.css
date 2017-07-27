@@ -1,5 +1,9 @@
 body {
     background-color: #CBCBCB;
+    height: 100%;
+    /*display: flex;
+    flex-direction: column;*/
+    /*justify-content: space-between;*/
 }
 
 .nav {
