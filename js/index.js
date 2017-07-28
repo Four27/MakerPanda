@@ -3,8 +3,8 @@ $(document).ready(function () {
     $(function () {
         if ($.cookie('username') && $.cookie('username') !== 'null') {
             $('.navbar .navbar-right').html('<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'
-                                             + $.cookie('username') +
-                                            '</a><ul class="dropdown-menu"><li><a class="exit">退出登录</a></li> </ul></li>');
+                + $.cookie('username') +
+                '</a><ul class="dropdown-menu"><li><a class="exit">退出登录</a></li> </ul></li>');
         }
     })
 
@@ -363,12 +363,13 @@ $(document).ready(function () {
             url: '/resetPassword',
             dataType: 'json',
             data: {
-                userPassword: $('.changePwd').val(),
-                verifyCode: $('.changeVerif').val(),
-                userId: $('.forgetEmail').val()
+                userPassword: $('.resetPwd input').val(),
+                verifyCode: $('.resetVerif input').val(),
+                userId: $('.resetEmail input').val()
             },
             success: function (data) {
                 if (data.status === 601) {
+                    resetClose();
                     alert(data.errMsg);
                 }
                 else if (data.status === 602) {
@@ -382,6 +383,7 @@ $(document).ready(function () {
                 }
             },
             error: function (jqXHR) {
+                alert('hello');
                 alert('未知错误：' + jqXHR.status);
             }
         })
@@ -427,12 +429,9 @@ $(document).ready(function () {
     $('.resetFooter button').click(function () {
         var pwdAgainInput = $('.resetPwdAgain input')
         var pwdVal = $('.resetPwd input').val().trim();
-        if (!checkPwdAgain(pwdVal, pwdAgainInput)) {
-            checkPwdAgain(pwdVal, pwdAgainInput);
-        }
-        else {
-            regConfirm();
-        }
+
+        checkPwdAgain(pwdVal, pwdAgainInput);
+        resetPwd();
     });
     $('.resetVerif button').click(function () {
         resetVerif();
