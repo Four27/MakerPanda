@@ -414,6 +414,7 @@ $(document).ready(function () {
         regVerif();
     });
     $('.regFooter button').click(function () {
+        alert('hello');
         regConfirm();
     })
 
