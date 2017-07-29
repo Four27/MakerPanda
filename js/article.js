@@ -16,13 +16,13 @@ $(document).ready(function () {
 
                 var title = article.artiTitle;
                 var articleId = article.artiId;
-                var time = article.pubTime;
+                var time = article.pubTime.split('T')[0];
                 var admin = article.adminName;
                 var data = article.artiData;
 
-                $('.main .title').test(title);
-                $('.main .time .pubtime').text(time);
-                $('.main .time .admin').text(admin);
+                $('.main .title p').text(title);
+                $('.main .b-pubtime').text(time);
+                $('.main .b-pubname').text(admin);
                 $('.main .content').html(data);
             }
             else {
