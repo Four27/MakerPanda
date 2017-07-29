@@ -8,54 +8,181 @@
     <title>MakerPanda</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="style/article.css">
+    <link rel="stylesheet" href="style/index.css">
 </head>
 
 <body>
-    <!--导航-->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                    aria-expanded="false">
+    <div id="container">
+        <!--导航-->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                        aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">
-                    <img src="images/logo.png" alt="brand">
-                </a>
+                    <a class="navbar-brand" href="#">
+                        <img src="images/logo.png" alt="brand">
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html">首页</a></li>
+                        <li><a href="#">Mixly</a></li>
+                        <li><a href="#">Scratch</a></li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="header-register"><a>注册</a></li>
+                        <li id="header-signin"><a>登录</a></li>
+                    </ul>
+                </div>
             </div>
+        </nav>
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html">首页</a></li>
-                    <li><a href="#">Mixly</a></li>
-                    <li><a href="#">Scratch</a></li>
-                </ul>
+        <!--main-->
+        <div id="page">
+            <div class="main">
+                <div class="title">
+                    <p>熊孩子创客坊</p>
+                </div>
 
-                <ul class="nav navbar-nav navbar-right">
-                    <li id="header-register"><a>注册</a></li>
-                    <li id="header-signin"><a>登录</a></li>
-                </ul>
+                <div class="publish">
+                    <p>
+                        <b class="b-time">发布时间：</b>
+                        <b class="b-pubtime"></b>
+                        <b>&nbsp&nbsp&nbsp</b>
+                        <b class="b-by">发布者：</b>
+                        <b class="b-pubname"></b>
+                    </p>
+                </div>
+
+                <div class="content">
+                </div>
             </div>
         </div>
-    </nav>
 
-    <!--main-->
-    <div class="main">
-        <div class="title">
-            <div>熊孩子创客行</div>
+        <!--登录页面-->
+        <div class="mask"></div>
+        <div class="log">
+            <div class="content">
+                <div class="logHeader">
+                    <button type="button" class="close"><span>&times;</span></button>
+                    <img src="images/logo.png" alt="logo">
+                </div>
+
+                <div class="logBody">
+                    <form>
+                        <div class="input-group input-group-lg logEmail">
+                            <span class="input-group-addon"><label class="glyphicon glyphicon-user"></label></span>
+                            <input type="text" class="form-control" placeholder="输入邮箱" aria-describedby="sizing-addon1">
+                        </div>
+
+                        <div class="input-group input-group-lg logPwd">
+                            <span class="input-group-addon"><label class="glyphicon glyphicon-lock"></label></span>
+                            <input type="password" class="form-control" placeholder="输入密码" aria-describedby="sizing-addon1">
+                        </div>
+
+                        <div class="forget"><a>忘记密码？</a></div>
+                    </form>
+                </div>
+
+                <div class="logFooter">
+                    <button type="button" class="btn btn-primary">登 录</button>
+                </div>
+            </div>
         </div>
 
-        <div class="time">
-            <div><p>发布时间：</p><p class="pubtime">2015/4/5</p></div>
-            <div><p>发布者：</p><p class="admin">太极熊</p></div>
+        <!--注册页面-->
+        <div class="mask"></div>
+        <div class="register">
+            <div class="content">
+                <div class="regHeader">
+                    <button type="button" class="close"><span>&times;</span></button>
+                    <img src="images/logo.png" alt="logo">
+                </div>
+
+                <div class="regBody">
+                    <form>
+                        <div class="input-group input-group-lg regEmail">
+                            <span class="input-group-addon"><label class="glyphicon glyphicon-envelope"></label></span>
+                            <input type="text" class="form-control" placeholder="邮箱">
+                        </div>
+
+                        <div class="input-group input-group-lg regUser">
+                            <span class="input-group-addon"><label class="glyphicon glyphicon-user"></label></span>
+                            <input type="text" class="form-control" placeholder="用户名">
+                        </div>
+
+                        <div class="input-group input-group-lg regPwd">
+                            <span class="input-group-addon"><label class="glyphicon glyphicon-lock"></label></span>
+                            <input type="password" class="form-control" placeholder="密码">
+                        </div>
+
+                        <div class="input-group input-group-lg regPwdAgain">
+                            <span class="input-group-addon"><label class="glyphicon glyphicon-lock"></label></span>
+                            <input type="password" class="form-control" placeholder="确认密码">
+                        </div>
+
+                        <div class="input-group input-group-lg regVerif">
+                            <input type="text" class="form-control" placeholder="验证码">
+                            <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">获取验证码</button>
+                        </span>
+                        </div>
+                    </form>
+                </div>
+                <div class="regFooter">
+                    <button type="button" class="btn btn-primary">注册</button>
+                </div>
+            </div>
         </div>
 
-        <div class="content">
-            7月2日下午，“熊孩子创客坊”校园行活动在电子科技大学附属小学举办。 熊孩子工坊的工作人员为孩子们带去了很多有趣的产品，孩子们都乐在其中。 本次活动旨在让小孩子们在动手使用产品的工作中也能开动脑筋思考，在玩 的过程中学习知识培养创新能力7月2日下午，“熊孩子创客坊”校园行活动在电子科技大学附属小学举办。
-         工作中也能开动脑筋思考，在玩 的过程中学习知识培养创新能力
+        <!--修改密码页面-->
+        <div class="mask"></div>
+        <div class="reset">
+            <div class="content">
+                <div class="resetHeader">
+                    <button type="button" class="close"><span>&times;</span></button>
+                    <img src="images/logo.png" alt="logo">
+                </div>
+
+                <div class="resetBody">
+                    <form>
+                        <div class="input-group input-group-lg resetEmail">
+                            <span class="input-group-addon"><label class="glyphicon glyphicon-envelope"></label></span>
+                            <input type="text" class="form-control" placeholder="邮箱">
+                        </div>
+
+                        <div class="input-group input-group-lg resetPwd">
+                            <span class="input-group-addon"><label class="glyphicon glyphicon-lock"></label></span>
+                            <input type="password" class="form-control" placeholder="密码">
+                        </div>
+
+                        <div class="input-group input-group-lg resetPwdAgain">
+                            <span class="input-group-addon"><label class="glyphicon glyphicon-lock"></label></span>
+                            <input type="password" class="form-control" placeholder="确认密码">
+                        </div>
+
+                        <div class="input-group input-group-lg resetVerif">
+                            <input type="text" class="form-control" placeholder="验证码">
+                            <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">获取验证码</button>
+                        </span>
+                        </div>
+                        <div class="remind">
+                            <p>验证码将会发送至你的注册邮箱</p>
+                        </div>
+                    </form>
+                </div>
+                <div class="resetFooter">
+                    <button type="button" class="btn btn-primary">修改密码</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -74,10 +201,13 @@
         </div>
     </div>
 
+
+
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/article.js"></script>
     <script src="js/jquery.cookie.js"></script>
+    <script src="js/article.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>
