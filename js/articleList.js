@@ -31,8 +31,11 @@ $(document).ready(function () {
 
                     for (var i = 0; i < articleLen; i++) {
                         var article = list[i].artiData.replace(re1, '');
-                        var inform = $('<div class="col-sm-6 col-md-4 item"><div class="thumbnail"><div class="caption"><h3><a class="1" id="' + count + '">' +
-                            list[i].artiTitle + '</a></h3><p>' + article.substr(0, 110) + '...</p></div></div></div>');
+                        var time = list[i].pubTime.split('T')[0];
+                         var inform = $('<div class="col-sm-6 col-md-4 item"><div class="thumbnail"><div class="caption"><h3><a class="1" id="' + count + '">' +
+                            list[i].artiTitle + '</a></h3><p>' + article.substr(0, 110) + '...</p></div><p class="pub"><label class="glyphicon glyphicon-calendar"></label><b>' + 
+                            time + '</b><label class="glyphicon glyphicon-user"></label><b>' + list[i].adminName + '</b></p></div></div>');
+
 
                         inform.appendTo('.main .content');
                         count++;
@@ -80,8 +83,10 @@ $(document).ready(function () {
 
                     for (var i = 0; i < articleLen; i++) {
                         var article = list[i].artiData.replace(re1, '');
+                        var time = list[i].pubTime.split('T')[0];
                         var inform = $('<div class="col-sm-6 col-md-4 item"><div class="thumbnail"><div class="caption"><h3><a class="1" id="' + count + '">' +
-                            list[i].artiTitle + '</a></h3><p>' + article.substr(0, 110) + '...</p></div></div></div>');
+                            list[i].artiTitle + '</a></h3><p>' + article.substr(0, 110) + '...</p></div><p class="pub"><label class="glyphicon glyphicon-calendar"></label><b>' + 
+                            time + '</b><label class="glyphicon glyphicon-user"></label><b>' + list[i].adminName + '</b></p></div></div>');
 
                         inform.appendTo('.main .content');
                         count++;
@@ -132,8 +137,11 @@ $(document).ready(function () {
 
                     for (var i = 0; i < articleLen; i++) {
                         var article = list[i].artiData.replace(re1, '');
-                        var inform = $('<div class="col-sm-6 col-md-4 item"><div class="thumbnail"><div class="caption"><h3><a class="1" id="' + count + '">' +
-                            list[i].artiTitle + '</a></h3><p>' + article.substr(0, 110) + '...</p></div></div></div>');
+                        var time = list[i].pubTime.split('T')[0];
+                         var inform = $('<div class="col-sm-6 col-md-4 item"><div class="thumbnail"><div class="caption"><h3><a class="1" id="' + count + '">' +
+                            list[i].artiTitle + '</a></h3><p>' + article.substr(0, 110) + '...</p></div><p class="pub"><label class="glyphicon glyphicon-calendar"></label><b>' + 
+                            time + '</b><label class="glyphicon glyphicon-user"></label><b>' + list[i].adminName + '</b></p></div></div>');
+
 
                         inform.appendTo('.main .content');
                         count++;
