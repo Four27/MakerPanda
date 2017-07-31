@@ -105,6 +105,22 @@ body {
   height: 100%;
 }
 
+.main .item .caption{
+  border-bottom: 1px solid #CBCBCB;
+}
+
+.main .item .pub > label {
+  padding-left: 10px;
+  padding-top: 8px;
+  color: #CBCBCF;
+}
+
+.main .item .pub > b {
+  font-size: 6px;
+  padding-left: 6px;
+  font-weight: normal;
+}
+
 .main > nav {
   width: 400px;
 }
