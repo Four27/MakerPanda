@@ -4,7 +4,7 @@ $(document).ready(function () {
     var pageNumber = 0;
 
     //默认第一页
-    $(function getArticle(page) {
+    $(function getArticle() {
         $.ajax({
             type: 'post',
             url: ' /ShowBriefArticle',
@@ -32,19 +32,15 @@ $(document).ready(function () {
                     for (var i = 0; i < articleLen; i++) {
                         var article = list[i].artiData.replace(re1, '');
                         var time = list[i].pubTime.split('T')[0];
-                         var inform = $('<div class="col-sm-6 col-md-4 item"><div class="thumbnail"><div class="caption"><h3><a class="1" id="' + count + '">' +
-                            list[i].artiTitle + '</a></h3><p>' + article.substr(0, 110) + '...</p></div><p class="pub"><label class="glyphicon glyphicon-calendar"></label><b>' + 
-                            time + '</b><label class="glyphicon glyphicon-user"></label><b>' + list[i].adminName + '</b></p></div></div>');
+                        var inform = '<div class="col-md-12 item"><div class="thumbnail"><div class="caption"><h3><a class="1" id="' + count + '">' +
+                            list[i].artiTitle + '</a></h3><p>' + article.substr(0, 200) + '...</p></div><p class="pub"><label class="glyphicon glyphicon-calendar"></label><b>' +
+                            time + '</b><label class="glyphicon glyphicon-user"></label><b>' + list[i].adminName + '</b></p></div></div>';
 
 
-                        inform.appendTo('.main .content');
+                        $('.main .content').append(inform);
                         count++;
                     }
-
-                    $('.main .content').masonry({
-                        itemSelector: '.item'
-                    });
-
+                    // pinterest();
                 }
                 else {
                     alert(data.errMsg + data.status);
@@ -62,55 +58,12 @@ $(document).ready(function () {
             alert('已经到文章最后一页~');
             return true;
         }
-
         page++;
 
-        $.ajax({
-            type: 'post',
-            url: ' /ShowBriefArticle',
-            dataType: 'json',
-            data: {
-                pageNum: page
-            },
-            success: function (data) {
-                if (data.status === 200) {
-                    var list = data.jsonStrArray.artiList;
-                    var articleLen = list.length;
-                    var re1 = new RegExp("<.+?>", "g");
-                    var count = 0
-
-                    $('.main .content').empty();
-
-                    for (var i = 0; i < articleLen; i++) {
-                        var article = list[i].artiData.replace(re1, '');
-                        var time = list[i].pubTime.split('T')[0];
-                        var inform = $('<div class="col-sm-6 col-md-4 item"><div class="thumbnail"><div class="caption"><h3><a class="1" id="' + count + '">' +
-                            list[i].artiTitle + '</a></h3><p>' + article.substr(0, 110) + '...</p></div><p class="pub"><label class="glyphicon glyphicon-calendar"></label><b>' + 
-                            time + '</b><label class="glyphicon glyphicon-user"></label><b>' + list[i].adminName + '</b></p></div></div>');
-
-                        inform.appendTo('.main .content');
-                        count++;
-                    }
-
-                    var $grid = $('.main .content').masonry({
-                        itemSelector: '.item',
-                        percentPosition: true
-                    });
-
-                    $('.main .content').height('100%');
-
-                }
-                else {
-                    alert(data.errMsg + data.status);
-                }
-            },
-            error: function (jqXHR) {
-                alert('未知错误：' + jqXHR.status);
-            }
-        });
+        newArticle(page);
     }
 
-    //上一页
+    // 上一页
     function preArticle() {
         if (page === 1) {
             alert('已经到文章第一页~');
@@ -119,6 +72,17 @@ $(document).ready(function () {
 
         page--;
 
+        newArticle(page);
+    }
+
+    // function pinterest() {
+    //     $('.main .content').masonry({
+    //         itemSelector: '.item'
+    //     });
+    // }
+
+    function newArticle(page) {
+        $('.main .content').empty();
         $.ajax({
             type: 'post',
             url: ' /ShowBriefArticle',
@@ -133,26 +97,18 @@ $(document).ready(function () {
                     var re1 = new RegExp("<.+?>", "g");
                     var count = 0
 
-                    $('.main .content').empty();
-
                     for (var i = 0; i < articleLen; i++) {
                         var article = list[i].artiData.replace(re1, '');
                         var time = list[i].pubTime.split('T')[0];
-                         var inform = $('<div class="col-sm-6 col-md-4 item"><div class="thumbnail"><div class="caption"><h3><a class="1" id="' + count + '">' +
-                            list[i].artiTitle + '</a></h3><p>' + article.substr(0, 110) + '...</p></div><p class="pub"><label class="glyphicon glyphicon-calendar"></label><b>' + 
-                            time + '</b><label class="glyphicon glyphicon-user"></label><b>' + list[i].adminName + '</b></p></div></div>');
+                        var inform = '<div class="col-md-12 item"><div class="thumbnail"><div class="caption"><h3><a class="' + page + '" id="' + count + '">' +
+                            list[i].artiTitle + '</a></h3><p class="line">' + article.substr(0, 200) + '...</p></div><p class="pub"><label class="glyphicon glyphicon-calendar"></label><b>' +
+                            time + '</b><label class="glyphicon glyphicon-user"></label><b>' + list[i].adminName + '</b></p></div></div>';
 
 
-                        inform.appendTo('.main .content');
+                        $('.main .content').after(inform);
                         count++;
                     }
-
-                    $('.main .content').masonry({
-                        itemSelector: '.item'
-                    });
-
-                    $('.main .content').height('100%');
-
+                    // pinterest();
                 }
                 else {
                     alert(data.errMsg + data.status);
@@ -165,16 +121,15 @@ $(document).ready(function () {
     }
 
     $('.next').click(function () {
-        nextArticle();
+        nextArticle(page);
     });
 
     $('.previous').click(function () {
         preArticle(page);
     });
 
-
     // 新闻详情页面跳转
-    $(document).on('click', '.col-sm-6 h3 a', function () {
+    $(document).on('click', '.col-md-12 h3 a', function () {
         var id = $(this).attr('id');
         var number = $(this).attr('class');
 
