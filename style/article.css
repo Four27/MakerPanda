@@ -1,16 +1,9 @@
 html body {
     background-color: #CBCBCB;
-    /*margin: 0;*/
+    margin: 0;
     padding:0; 
     height: 100%;
 }
-
-/*#container {
-  min-height:100%; 
-  height: auto !important; 
-  height: 100%; 
-  position: relative;
-}*/
 
 .nav {
   padding-left: 0px;
@@ -84,20 +77,20 @@ html body {
   }
 }
 
-/*#page {
-  width: 100%;
-  margin: 0 auto;
-  padding-bottom: 200px;
-}*/
+#page {
+  padding-bottom: 45px;
+}
 
-.main {
+#page .main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width:82%;
+    width:85%;
     border: 1px solid #E3E1DF;
     background-color: #FFF;
     padding-bottom: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 .main .title {
@@ -118,9 +111,8 @@ html body {
 }
 
 /*#footer {
-  position: absolute;
   bottom: 0; 
-  clear: both;
+  left:0;
   height: 200px;
 }*/
 
