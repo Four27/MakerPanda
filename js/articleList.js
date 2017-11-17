@@ -40,7 +40,6 @@ $(document).ready(function () {
                         $('.main .content').append(inform);
                         count++;
                     }
-                    // pinterest();
                 }
                 else {
                     alert(data.errMsg + data.status);
@@ -74,12 +73,6 @@ $(document).ready(function () {
 
         newArticle(page);
     }
-
-    // function pinterest() {
-    //     $('.main .content').masonry({
-    //         itemSelector: '.item'
-    //     });
-    // }
 
     function newArticle(page) {
         $('.main .content').empty();

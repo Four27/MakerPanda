@@ -23,10 +23,10 @@ $(document).ready(function () {
 
         mask.css({
             'display': 'block',
+            'position': 'fixed',
+            'bottom': '0',
             'width': 'sWidth' + 'px',
             'height': 'sHeight' + 'px',
-            'top': 0,
-            'left': 0
         });
         login.css({
             'display': 'flex',
@@ -69,6 +69,8 @@ $(document).ready(function () {
 
         mask.css({
             'display': 'block',
+            'position': 'fixed',
+            'bottom': '0',
             'width': 'sWidth' + 'px',
             'height': 'sHeight' + 'px'
         });
@@ -112,6 +114,8 @@ $(document).ready(function () {
 
         mask.css({
             'display': 'block',
+            'position': 'fixed',
+            'bottom': '0',
             'width': 'sWidth' + 'px',
             'height': 'sHeight' + 'px'
         });
@@ -200,6 +204,7 @@ $(document).ready(function () {
         }
         return true;
     }
+    
     //验证用户名合法性
     function isUserName(str) {
         var reg = /[0-9a-zA-Z_\@\.\+\-]{1,20}/;
@@ -416,7 +421,7 @@ $(document).ready(function () {
     $('.regFooter button').click(function () {
         alert('hello');
         regConfirm();
-    })
+    });
 
     //触发修改密码中的函数
     $('.resetPwd input').click(function () {
